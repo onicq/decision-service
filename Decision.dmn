@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20230324/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20230324/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="https://kie.org/dmn/extensions/1.0" expressionLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/" namespace="https://kie.org/dmn/_6BC9393F-B51A-49D2-999E-A7D22AA82342" id="decision" name="decision">
+  <itemDefinition id="_A57CF03A-F946-4D63-A8BA-D484FAC7C2F9" name="tResponse" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+    <itemComponent id="_699988E7-8B95-406D-9412-A579A9E49B51" name="Id" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>string</typeRef>
+    </itemComponent>
+    <itemComponent id="_E849CAC9-1B7E-4B32-9285-1B5E8BA2A335" name="Status" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>string</typeRef>
+    </itemComponent>
+    <itemComponent id="_0C0E397D-ADFA-43E2-826F-DF25E8C1F04B" name="Message" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>string</typeRef>
+    </itemComponent>
+  </itemDefinition>
+  <itemDefinition id="_DA8DBC87-72A0-4105-9CC4-6F0E935FBA15" name="tRequest" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+    <itemComponent id="_D09FB619-BE2A-411E-993B-0772B6560BCE" name="Id" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>string</typeRef>
+    </itemComponent>
+    <itemComponent id="_5635DA92-2D57-491E-97C7-2F2C6FAD909F" name="Code" isCollection="false" typeLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/">
+      <typeRef>string</typeRef>
+    </itemComponent>
+  </itemDefinition>
+  <inputData name="Request" id="_A867FE10-B7DA-4171-BA43-7D9E96D609D4">
+    <variable name="Request" id="_743A45B5-3B51-4B01-8EBE-4250AE12A503" typeRef="tRequest" />
+  </inputData>
+  <decision name="Decision" id="_B6C1295F-E851-4270-91DD-CEA1BD8C2855">
+    <variable name="Decision" id="_ADA81977-04F8-4047-AC4C-2B6CEDCD21FE" typeRef="tResponse" />
+    <informationRequirement id="_B9AB7D7F-D21E-42DB-B52F-024A3E586FB0">
+      <requiredInput href="#_A867FE10-B7DA-4171-BA43-7D9E96D609D4" />
+    </informationRequirement>
+    <decisionTable id="_F3A7DAFC-923A-4F9B-A624-19AD4A27E006" typeRef="tResponse" hitPolicy="UNIQUE" label="Decision">
+      <input id="_76C9CAD2-4639-4711-891E-C0C646AAB34B">
+        <inputExpression id="_2A4FDB27-CFB2-4FD5-8629-28643F288445" typeRef="string">
+          <text>Request.Id</text>
+        </inputExpression>
+      </input>
+      <input id="_6A1D5746-711B-416F-81AF-FB58D66EFFC9">
+        <inputExpression id="_BB9D5EE2-C2AF-4A12-A1CB-70627C172006" typeRef="string">
+          <text>Request.Code</text>
+        </inputExpression>
+      </input>
+      <output id="_DDDCC81F-904F-4BBA-8DBB-020EB3826AA7" name="Id" typeRef="string" />
+      <output id="_D2D15091-0F1D-45A7-8DB9-7ED12485E28E" name="Status" typeRef="string" />
+      <output id="_046820F0-C8B7-4AE4-B57F-8B7F88F16A1D" name="Message" typeRef="string" />
+      <annotation name="Annotations" />
+      <rule id="_87C9F8B6-36D5-4F93-BB70-709DAC86A2F2">
+        <inputEntry id="_AD0DBA12-D4DF-42D8-B1D2-2AC29181C1C4">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="_114790A7-7629-4FAE-BAEC-00BD91846284">
+          <text>&quot;001&quot;</text>
+        </inputEntry>
+        <outputEntry id="_75E1996D-8420-4E18-A258-4DA0490980D9">
+          <text>Request.Id</text>
+        </outputEntry>
+        <outputEntry id="_22B16B60-4762-4632-9143-A8CEA415646A">
+          <text>&quot;Success&quot;</text>
+        </outputEntry>
+        <outputEntry id="_F75A9E51-1F86-4103-B6B5-C4889A7082B8">
+          <text>&quot;OK&quot;</text>
+        </outputEntry>
+        <annotationEntry>
+          <text>// Your annotations here</text>
+        </annotationEntry>
+      </rule>
+      <rule id="_1E50D2F1-E376-4FBC-B644-185788D93C05">
+        <inputEntry id="_762020AA-9DD4-4193-AAE1-84B21B82AE77">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="_33BBB070-C999-4078-B1F0-669C1CC0D686">
+          <text>&quot;002&quot;</text>
+        </inputEntry>
+        <outputEntry id="_D218298E-F4BD-4F1E-BEF7-40C7C1D6B6F9">
+          <text>Request.Id</text>
+        </outputEntry>
+        <outputEntry id="_D72472B3-4B11-478D-8E43-A0A0D900E433">
+          <text>&quot;Reject&quot;</text>
+        </outputEntry>
+        <outputEntry id="_1DB816B2-DAF6-47E5-A379-6EBED1B1647D">
+          <text>&quot;Declined Code&quot;</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+      <rule id="_026AF650-FCC1-4E40-A23F-DB4FD0308248">
+        <inputEntry id="_289B1863-DDDC-42FE-B6DE-D18D68B4D3BE">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="_A774A243-1769-4522-AE9C-B6E557065614">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="_F08D513D-182F-464E-879B-74BAFF8F1554">
+          <text>Request.Id</text>
+        </outputEntry>
+        <outputEntry id="_8779D897-CA89-4A1E-967C-6E5BEB1BAE62">
+          <text>&quot;Error&quot;</text>
+        </outputEntry>
+        <outputEntry id="_A8471373-EA42-40F1-A0F8-B8CB596D46EE">
+          <text>&quot;Invalid Code&quot;</text>
+        </outputEntry>
+        <annotationEntry>
+          <text></text>
+        </annotationEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_74C9F9F5-D193-4147-9C7B-93768DBF36E4" name="Default DRD" useAlternativeInputDataShape="false">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_F3A7DAFC-923A-4F9B-A624-19AD4A27E006">
+            <kie:width>60</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>118</kie:width>
+            <kie:width>240</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="_20C9F4C2-2E1F-4D14-9F27-C2B09E30ED4B" dmnElementRef="_A867FE10-B7DA-4171-BA43-7D9E96D609D4" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="460" y="200" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_9170C1A9-A8D7-4C6F-880F-902A2752F019" dmnElementRef="_B6C1295F-E851-4270-91DD-CEA1BD8C2855" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="460" y="20" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="_CA92E83B-22F7-48F7-A2C2-8ADEE84501C6" dmnElementRef="_B9AB7D7F-D21E-42DB-B52F-024A3E586FB0" sourceElement="_20C9F4C2-2E1F-4D14-9F27-C2B09E30ED4B" targetElement="_9170C1A9-A8D7-4C6F-880F-902A2752F019">
+        <di:waypoint x="540" y="240" />
+        <di:waypoint x="540" y="100" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
